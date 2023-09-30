@@ -2,9 +2,12 @@ import "../styles/ShortnerForm.css";
 
 const ShortnerForm = () => {
   return (
-    <form action="">
-      <p>This is the form section</p>
-    </form>
+    <div className="form-container">
+      <form action="">
+        <input type="text" placeholder="Shorten a link here..." />
+        <button>Shorten it!</button>
+      </form>
+    </div>
   );
 };
 

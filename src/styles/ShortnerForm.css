@@ -1,0 +1,59 @@
+.form-container {
+  background: url("../assets/images/bg-shorten-desktop.svg"), hsl(257, 27%, 26%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100px;
+  border-radius: 20px;
+  padding: 70px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  position: absolute;
+  top: -8%;
+  width: 90%;
+}
+
+.form-container form {
+  width: 100%;
+}
+.form-container form input {
+  width: 80%;
+  margin-right: 2%;
+  border: 0;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+.form-container form input:focus {
+  outline: none;
+}
+
+.form-container form button {
+  width: 18%;
+  border: 0;
+  background-color: hsl(180, 66%, 49%);
+  height: 40px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 700;
+  padding: 0 10px;
+}
+
+@media (max-width: 1300px) {
+  .form-container {
+    top: -4.5%;
+  }
+}
+
+@media (max-width: 500px) {
+  .form-container form input {
+    width: 100%;
+  }
+  .form-container form button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}

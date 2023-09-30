@@ -1,14 +1,11 @@
 const ShortenedUrlList = () => {
   return (
     <ul>
-      ShortenedUrlList - List of urls
       <ListItem />
     </ul>
   );
 };
 
-const ListItem = () => {
-  return <li>This is the list item component</li>;
-};
+const ListItem = () => {};
 
 export default ShortenedUrlList;
