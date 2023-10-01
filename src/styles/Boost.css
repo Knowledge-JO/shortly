@@ -1,0 +1,28 @@
+.boost-container {
+  background: url("../assets/images/bg-boost-desktop.svg"), hsl(257, 27%, 26%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 30px 5%;
+  text-align: center;
+}
+
+.boost-container h1 {
+  color: #fff;
+}
+
+.boost-container button {
+  border: none;
+  background-color: hsl(180, 66%, 49%);
+  font-weight: 700;
+  padding: 15px 40px;
+  border-radius: 20px;
+  color: #fff;
+  margin-top: -10px;
+}
+
+@media (max-width: 500px) {
+  .boost-container h1 {
+    font-size: 20px;
+  }
+}

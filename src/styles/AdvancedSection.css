@@ -98,6 +98,7 @@
   .advanced-dets-cards-container .card {
     text-align: center;
     width: 100%;
+    height: 400px;
   }
 
   .advanced-dets-cards-container .card div {
