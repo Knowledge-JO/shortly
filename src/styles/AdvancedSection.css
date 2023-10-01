@@ -97,16 +97,17 @@
   }
   .advanced-dets-cards-container .card {
     text-align: center;
-    width: 100%;
-    height: 280px;
-  }
-
-  .advanced-dets-cards-container .card p {
-    width: 400px;
+    padding-bottom: 200px;
   }
 
   .advanced-dets-cards-container .card div {
     left: 50%;
     margin-left: -28px;
+  }
+}
+
+@media (max-width: 420px) {
+  .advanced-dets-cards-container .card {
+    width: 100%;
   }
 }
