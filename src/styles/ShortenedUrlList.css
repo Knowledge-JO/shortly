@@ -1,0 +1,73 @@
+.list-container {
+  padding-top: 120px;
+  padding-left: 0;
+  overflow-y: auto;
+}
+
+.list-container .list {
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.list div a {
+  margin-right: 30px;
+  color: hsl(180, 66%, 49%);
+  text-decoration: none;
+}
+
+.list div button {
+  padding: 10px 30px;
+  border: none;
+  background-color: hsl(180, 66%, 49%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.list div button.active {
+  background-color: hsl(260, 8%, 14%);
+}
+
+@media (max-width: 1300px) {
+  .list-container {
+    padding-top: 120px;
+  }
+}
+
+@media (max-width: 700px) {
+  .list-container .list {
+    flex-direction: column;
+    justify-content: initial;
+    height: 120px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .list-container .list {
+    display: block;
+    text-align: left;
+    padding: 20px 10px;
+    height: auto;
+  }
+  .list p {
+    border-bottom: 1px hsl(0, 0%, 75%) solid;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .list div a {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: -5px;
+  }
+  .list div button {
+    width: 100%;
+  }
+}

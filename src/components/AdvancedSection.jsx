@@ -3,11 +3,66 @@ import ShortnerForm from "./ShortnerForm";
 import brandRecognition from "../assets/images/icon-brand-recognition.svg";
 import detailedRecords from "../assets/images/icon-detailed-records.svg";
 import fullyCustomizable from "../assets/images/icon-fully-customizable.svg";
+import ShortenedUrlList from "./ShortenedUrlList";
+import { useEffect, useState } from "react";
 
+const url = "https://api.shrtco.de/v2/shorten?url=";
 const AdvancedSection = () => {
+  const [link, setLink] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const db = localStorage.getItem("shortened_links");
+  const [shortenedLinks, setShortenedLinks] = useState(db ? db.split(",") : []);
+
+  useEffect(() => {
+    console.log(shortenedLinks);
+  }, [shortenedLinks]);
+
+  const handleShortnerForm = async (e) => {
+    e.preventDefault();
+    if (link) {
+      setError(false);
+      const completeUrl = url + link.trim();
+      const res = await fetch(completeUrl);
+      const result = await res.json();
+      if (result.ok) {
+        const short_link = result.result.full_short_link;
+        setShortenedLinks((shortenedLinks) => [
+          ...shortenedLinks,
+          `${link} ${short_link}`,
+        ]);
+        if (db !== null) {
+          const items = localStorage.getItem("shortened_links").split(",");
+          localStorage.setItem(`shortened_links`, [
+            ...items,
+            `${link} ${short_link}`,
+          ]);
+        } else {
+          localStorage.setItem(`shortened_links`, [`${link} ${short_link}`]);
+        }
+      } else {
+        setError(true);
+        setErrorMsg("Try again with a valid link.");
+        console.log(errorMsg);
+      }
+    } else {
+      setError(true);
+      setErrorMsg("Please add a link");
+    }
+  };
+
   return (
     <div className="advanced-section">
-      <ShortnerForm />
+      <ShortnerForm
+        onHandleForm={handleShortnerForm}
+        onSetLink={setLink}
+        error={error}
+        errorMsg={errorMsg}
+        link={link}
+      />
+
+      <ShortenedUrlList shortenedLinks={shortenedLinks} />
 
       <div className="advanced-stats">
         <div className="stats-header">
