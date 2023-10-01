@@ -21,34 +21,39 @@ const AdvancedSection = () => {
 
   const handleShortnerForm = async (e) => {
     e.preventDefault();
-    if (link) {
-      setError(false);
-      const completeUrl = url + link.trim();
-      const res = await fetch(completeUrl);
-      const result = await res.json();
-      if (result.ok) {
-        const short_link = result.result.full_short_link;
-        setShortenedLinks((shortenedLinks) => [
-          ...shortenedLinks,
-          `${link} ${short_link}`,
-        ]);
-        if (db !== null) {
-          const items = localStorage.getItem("shortened_links").split(",");
-          localStorage.setItem(`shortened_links`, [
-            ...items,
+    try {
+      if (link) {
+        setError(false);
+        const completeUrl = url + link.trim();
+        const res = await fetch(completeUrl);
+        const result = await res.json();
+        if (result.ok) {
+          const short_link = result.result.full_short_link;
+          setShortenedLinks((shortenedLinks) => [
+            ...shortenedLinks,
             `${link} ${short_link}`,
           ]);
+          if (db !== null) {
+            const items = localStorage.getItem("shortened_links").split(",");
+            localStorage.setItem(`shortened_links`, [
+              ...items,
+              `${link} ${short_link}`,
+            ]);
+          } else {
+            localStorage.setItem(`shortened_links`, [`${link} ${short_link}`]);
+          }
         } else {
-          localStorage.setItem(`shortened_links`, [`${link} ${short_link}`]);
+          setError(true);
+          setErrorMsg("Try again with a valid link.");
+          console.log(errorMsg);
         }
       } else {
         setError(true);
-        setErrorMsg("Try again with a valid link.");
-        console.log(errorMsg);
+        setErrorMsg("Please add a link");
       }
-    } else {
+    } catch (err) {
       setError(true);
-      setErrorMsg("Please add a link");
+      setErrorMsg(err.message);
     }
   };
 

@@ -13,7 +13,7 @@ const ShortenedUrlList = ({ shortenedLinks }) => {
       {shortenedLinksSlice.map((link, index) => (
         <ListItem
           key={index}
-          originalLink={link.split(" ")[0]}
+          originalLink={link.split(" ")[0].slice(0, 20)}
           shortLink={link.split(" ")[1]}
         />
       ))}
@@ -24,8 +24,11 @@ const ShortenedUrlList = ({ shortenedLinks }) => {
 const ListItem = ({ originalLink, shortLink }) => {
   return (
     <div className="list">
-      <p>{originalLink}</p>
-      <div>
+      <div className="og-link">
+        <p>{originalLink}...</p>
+      </div>
+      {/* <hr /> */}
+      <div className="short">
         <a href={shortLink} target="_blank" rel="noreferrer">
           {shortLink}
         </a>

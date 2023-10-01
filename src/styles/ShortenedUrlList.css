@@ -1,7 +1,7 @@
 .list-container {
   padding-top: 120px;
   padding-left: 0;
-  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .list-container .list {
@@ -15,13 +15,13 @@
   border-radius: 10px;
 }
 
-.list div a {
+.list .short a {
   margin-right: 30px;
   color: hsl(180, 66%, 49%);
   text-decoration: none;
 }
 
-.list div button {
+.list .short button {
   padding: 10px 30px;
   border: none;
   background-color: hsl(180, 66%, 49%);
@@ -30,8 +30,10 @@
   font-weight: 700;
   border-radius: 10px;
 }
-
-.list div button.active {
+.list .og-link {
+  width: 300px;
+}
+.list .short button.active {
   background-color: hsl(260, 8%, 14%);
 }
 
@@ -41,26 +43,17 @@
   }
 }
 
-@media (max-width: 700px) {
-  .list-container .list {
-    flex-direction: column;
-    justify-content: initial;
-    height: 120px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 500px) {
+@media (max-width: 850px) {
   .list-container .list {
     display: block;
     text-align: left;
     padding: 20px 10px;
     height: auto;
   }
-  .list p {
-    border-bottom: 1px hsl(0, 0%, 75%) solid;
+  .list .og-link {
     width: 100%;
-    padding-bottom: 10px;
+    border-bottom: 1px hsl(0, 0%, 75%) solid;
+    margin-bottom: 20px;
   }
   .list div a {
     display: block;
